@@ -35,7 +35,8 @@ function initializeApp(){
     }
 }
 
-document.onload = function(e){
+document.onload(function(e){
+    console.log("docu loaded");
     // load jquery from google hosted libary if can't get fallback to local version
     loadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js", function(){
         if(window.jQuery){
@@ -50,4 +51,4 @@ document.onload = function(e){
             }, true);
         }
     }, true);
-}
+});
