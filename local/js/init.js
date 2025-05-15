@@ -32,7 +32,7 @@ function loadScript(url, callback, async) {
   }
 
 
-document.onload = function(){
+document.onload = function(e){
     // load jquery from google hosted libary if can't get fallback to local version
     loadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js", function(){
         if(window.jQuery){
