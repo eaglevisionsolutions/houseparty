@@ -1,7 +1,7 @@
 var CACHE_NAME = "hp-cache";
 var CACHED_LIBRARY = [
-    '/includes/header.html',
-    '/includes/footer.html',
+    'includes/header.html',
+    'includes/footer.html',
     '/offline-index.html'
 ];
 
