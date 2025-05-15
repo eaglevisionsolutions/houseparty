@@ -5,9 +5,6 @@ if("serviceWorker" in navigator){
         console.log("Service worker registration Failed:", err);
     });
 }
-var requiredFiles = [
-    '/local/js/app.js',
-];
 
 function loadScript(url, callback, async) {
     var script = document.createElement("script");
@@ -41,7 +38,7 @@ document.onload = function(){
         if(window.Jquery){
             initializeApp();
         }else{
-            loadScript("vendor/jquery/jquery-3.7.1.js", function(){
+            loadScript("vendor/Jquery/jquery-3.7.1.js", function(){
                 if(window.jQuery){
                     initialzeApp();
                 }else{
