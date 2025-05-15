@@ -1,6 +1,8 @@
 var CACHE_NAME = "hp-cache";
 var CACHED_LIBRARY = [
-    '/offline-index.html'
+    '/includes/header.html',
+    '/includes/footer.html',
+    '/index-offline.html'
 ];
 
 self.addEventListener("install", function(event){
@@ -17,7 +19,7 @@ self.addEventListener("fetch", function(event){
                 if(response){
                     return response;
                 }else if (event.request.headers.get("accept").inlcudes("text/html")){
-                    return caches.match("offline-index.html");
+                    return caches.match("index-offline.html");
                 }
             });
         })
