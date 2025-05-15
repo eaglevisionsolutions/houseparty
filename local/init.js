@@ -1,9 +1,7 @@
-function init(){
-    if(Modernizr.hasJquery){
-        console.log("jquery Loaded");
-    }else{
-        console.log("Error Loading Jquery");
-    }
+if("serviceWorker" in navigator){
+    navigator.serviceWorker.register("/app.js").then(function(registration){
+        console.log("Service Worker Registered with scope:", registration.scope);
+    }).catch(function(err){
+        console.log("Service worker registration Failed:", err);
+    });
 }
-
-init();
