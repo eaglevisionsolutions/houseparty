@@ -1,5 +1,5 @@
 const version = "1.0",
-CACHE_NAME = "hp-cache" + version,
+CACHE_NAME = "hp-cache-" + version,
 CACHED_LIST = [
     "/",
     '/init.js',
