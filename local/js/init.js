@@ -1,17 +1,10 @@
-if("serviceWorker" in navigator){
-    navigator.serviceWorker.register("/sw.js").then(function(registration){
-        console.log("Service Worker Registered with scope:", registration.scope);
-    }).catch(function(err){
-        console.log("Service worker registration Failed:", err);
-    });
-}
-
 function loadScript(url, callback, async) {
     var script = document.createElement("script");
     script.type = "text/javascript";
     script.onload = function() {
       callback();
     };
+
     script.onerror = function() {
       console.error('Failed to load script: ' + url);
       if (url.startsWith('https://')) {
@@ -22,6 +15,7 @@ function loadScript(url, callback, async) {
         console.error('Failed to load local fallback.');
       }
     };
+
     script.src = url;
     if(async === true){
         document.body.appendChild(script);
@@ -30,7 +24,16 @@ function loadScript(url, callback, async) {
     }
     
   }
-
+function initializeApp(){
+    // check if service workers are available if so establish one
+    if("serviceWorker" in navigator){
+        navigator.serviceWorker.register("/sw.js").then(function(registration){
+            console.log("Service Worker Registered with scope:", registration.scope);
+        }).catch(function(err){
+            console.log("Service worker registration Failed:", err);
+        });
+    }
+}
 
 document.onload = function(e){
     // load jquery from google hosted libary if can't get fallback to local version
