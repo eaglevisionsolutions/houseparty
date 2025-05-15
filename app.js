@@ -1,14 +1,17 @@
-var CACHE_NAME = "hp-cache";
-var CACHED_LIBRARY = [
+const version = "1.0",
+CACHE_NAME = "hp-cache" + version,
+CACHED_LIST = [
+    "/",
+    'init.js',
     '/includes/header.html',
     '/includes/footer.html',
-    '/index-offline.html'
+    '/index-offline.php'
 ];
 
 self.addEventListener("install", function(event){
     event.waitUntil(
         caches.open(CACHE_NAME).then(function(cache){
-            return cache.addAll(CACHED_LIBRARY);
+            return cache.addAll(CACHED_LIST);
         })
     );
 });
@@ -18,8 +21,8 @@ self.addEventListener("fetch", function(event){
             return caches.match(event.request, {ignoreSearch: true}).then(function(response){
                 if(response){
                     return response;
-                }else if (event.request.headers.get("accept").inlcudes("text/html")){
-                    return caches.match("index-offline.html");
+                }else if (event.request.headers.get("accept").includes("text/html")){
+                    return caches.match("index-offline.php");
                 }
             });
         })
