@@ -1,10 +1,27 @@
-var offlineResponse = "<h2>Welcome To Houseparty</h2>" + "<p>There Seems to be a problem with your connection.</p>" + "<p>We look forward to serving you when you are online again.</p>";
+var CACHE_NAME = "hp-cache";
+var CACHED_LIBRARY = [
+    '/includes/header.html',
+    '/includes/footer.html',
+    '/offline-index.html'
+];
 
+self.addEventListener("install", function(event){
+    event.waitUntil(
+        caches.open(CACHE_NAME).then(function(cache){
+            return cache.addAll(CACHED_LIBRARY);
+        })
+    );
+});
 self.addEventListener("fetch", function(event){
-    fetch
     event.respondWith(
         fetch(event.request).catch(function(){
-            return fetch("/index-offline.html");
+            return caches.match(event.request, {ignoreSearch: true}).then(function(response){
+                if(response){
+                    return response;
+                }else if (event.request.headers.get("accept").inlcudes("text/html")){
+                    return caches.match("offline-index.html");
+                }
+            });
         })
     );
 });
