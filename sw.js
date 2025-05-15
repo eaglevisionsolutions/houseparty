@@ -2,12 +2,13 @@ const version = "1.0",
 CACHE_NAME = "hp-cache-" + version,
 CACHED_LIST = [
     "/",
-    "/local/init.js",
+    "/local/css/style.css",
+    "/local/js/init.js",
     "/includes/header.html",
     "/includes/footer.html",
     "/index-offline.html",
-    "/local/app.js",
-    "/local/app-offline.js",
+    "/local/js/app.js",
+    "/local/js/app-offline.js",
 ];
 
 self.addEventListener("install", function(event){
