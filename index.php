@@ -26,6 +26,6 @@
 <noscript>You Must have Javascript enabled in order to use this Web App <button>Enable Javascript</button></noscript>
   <!-- Add your site or application content here -->
   <p>Hello world! This is HTML5 Boilerplate.</p>
-  <script src="vendor/Modernizr/modernizr-custom.js"></script>
+  <script src="local/init.js"></script>
 </body>
 </html>
