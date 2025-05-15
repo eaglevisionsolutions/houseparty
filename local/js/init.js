@@ -49,5 +49,5 @@ document.onload = function(){
                 }
             });
         }
-    });
+    }, true);
 }
