@@ -6,6 +6,6 @@ self.addEventListener("fetch", function(event){
                     "Content-Type" : "text/html"
                 }
             }
-        )
-    }))
+        );
+    }));
 });
