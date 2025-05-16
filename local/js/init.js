@@ -24,7 +24,7 @@ function loadScript(url, callback, async) {
     }
     
   }
-function initializeApp(){
+function startHpApp(){
     // check if service workers are available if so establish one
     if("serviceWorker" in navigator){
         navigator.serviceWorker.register("/sw.js").then(function(registration){
@@ -40,11 +40,11 @@ window.onload = function(){
     // load jquery from google hosted libary if can't get fallback to local version
     loadScript("https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js", function(){
         if(window.jQuery){
-            initializeApp();
+            startHpApp();
         }else{
             loadScript("vendor/Jquery/jquery-3.7.1.js", function(){
                 if(window.jQuery){
-                    initialzeApp();
+                    startHpApp();
                 }else{
                     console.log("Unable to Load Jquery");
                 }
