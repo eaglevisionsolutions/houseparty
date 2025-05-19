@@ -1,4 +1,4 @@
-const version = "1.0",
+const version = "4.0",
 CACHE_NAME = "hp-cache-" + version,
 CACHED_LIST = [
     "/",
@@ -18,6 +18,21 @@ self.addEventListener("install", function(event){
         })
     );
 });
+self.addEventListener("update", function(event){
+    event.waitUntil(
+        caches.keys().then(function(cacheNames){
+            return Promise.all(
+                cacheNames.map(function(cacheName){
+                    if(CACHE_NAME !== cacheName && cacheName.startsWith("h-cache")){
+                        return caches.delete(cacheName);
+                    }
+                })
+            )
+        }
+        )
+    )
+});
+
 self.addEventListener("fetch", function(event){
     event.respondWith(
         fetch(event.request).catch(function(){
